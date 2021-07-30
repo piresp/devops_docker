@@ -1,11 +1,11 @@
-## Index
+## # Index
 - [Container](#container)
 - [Volume](#volume)
 - [Entrypoint](#entrypoint)
 - [Build Images](#build-images)
 - [Networks](#networks)
 ---
-### Container
+### Container:
 ##### Create image as a container
 ```.dockerfile
 docker run -d -p 80:80 --name nginx nginx
@@ -26,7 +26,7 @@ docker run -d --name nginx -p 8081:80 --mount type=bind,source="$(pwd)",target=/
 docker run -d -v "$(pwd)"/html/x:/usr/share/nginx/html/ nginx
 ```
 ---
-### Volume
+### Volume:
 ##### Creating Volumes
 ```.dockerfile
 docker volume create myvol
@@ -39,7 +39,7 @@ docker run --name nginx -d --mount type=volume,source=myvolume,target=/app nginx
 docker run --name nginx2 -d --mount type=volume,source=myvolume,target=/app nginx
 ```
 ---
-### Entrypoint
+### Entrypoint:
 File:Dockerfile
 ```.dockerfile
 FROM ubuntu:latest
@@ -49,7 +49,7 @@ ENTRYPOINT ["echo","Hello"]
 CMD["World"]
 ```
 ---
-### Build Images
+### Build Images:
 ##### PHP with Lavarel
 file:Dockerfile
 ```.dockerfile
@@ -77,7 +77,7 @@ docker images
 docker rmi ubuntu
 ```
 ---
-### Networks
+### Networks:
 ##### Create network - bridge
 ```.dockerfile
 docker network create --driver bridge mynetwork
