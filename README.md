@@ -8,18 +8,18 @@
 ### Container:
 ##### Create image as a container
 ```.dockerfile
-docker run -d -p 80:80 --name nginx nginx
-docker exec -it nginx bash
-docker stop nginx
+docker run -d -p 80:80 --name {name} nginx
+docker exec -it {name} bash
+docker stop {name}
 ```
 ##### Kill
 ```.dockerfile
-docker rm nginx -f
+docker rm {name} -f
 docker rm $(docker ps -a -q) -f
 ```
 ##### directory method:bind
 ```.dockerfile
-docker run -d --name nginx -p 8081:80 --mount type=bind,source="$(pwd)",target=/usr/share/nginx/html/ nginx
+docker run -d --name {name} -p 8081:80 --mount type=bind,source="$(pwd)",target=/usr/share/nginx/html/ nginx
 ```
 ##### directory method:-v
 ```.dockerfile
@@ -29,14 +29,14 @@ docker run -d -v "$(pwd)"/html/x:/usr/share/nginx/html/ nginx
 ### Volume:
 ##### Creating Volumes
 ```.dockerfile
-docker volume create myvol
-docker volume inspect myvol
+docker volume create {name}
+docker volume inspect {name}
 docker volume prune
 ```
 ##### Sharing volumes
 ```.dockerfile
-docker run --name nginx -d --mount type=volume,source=myvolume,target=/app nginx
-docker run --name nginx2 -d --mount type=volume,source=myvolume,target=/app nginx
+docker run --name {name1} -d --mount type=volume,source=myvolume,target=/app nginx
+docker run --name {name2} -d --mount type=volume,source=myvolume,target=/app nginx
 ```
 ---
 ### Entrypoint:
@@ -74,25 +74,25 @@ CMD [ "--host=0.0.0.0" ]
 ##### List and purge images
 ```.dockerfile
 docker images
-docker rmi ubuntu
+docker rmi {name}
 ```
 ---
 ### Networks:
 ##### Create network - bridge
 ```.dockerfile
-docker network create --driver bridge mynetwork
+docker network create --driver bridge {namenet}
 ```
 ##### Create container with network
 ```.dockerfile
-docker run -dit --name ubuntu1 --network mynetwork bash
+docker run -dit --name {namecont1} --network {namenet} bash
 ```
 ##### Connecting container to a network
 ```.dockerfile
-docker run -dit --name ubuntu2 bash
-docker network connect mynetwork ubuntu2
+docker run -dit --name {namecont2} bash
+docker network connect {namenet} {namecont2}
 ```
 ##### Connection test 
 ```.dockerfile
-ping ubuntu1
+ping {namecont1}
 ```
 
