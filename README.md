@@ -4,6 +4,7 @@
 - [Entrypoint](#entrypoint)
 - [Build Images](#build-images)
 - [Networks](#networks)
+- [Docker-Compose](#docker-compose)
 ---
 ### Container:
 ##### Create image as a container
@@ -94,5 +95,12 @@ docker network connect {namenet} {namecont2}
 ##### Connection test 
 ```.dockerfile
 ping {namecont1}
+```
+---
+### Docker Compose:
+```.dockerfile
+docker-compose up
+docker-compose up -d --build
+docker-compose ps
 ```
 
