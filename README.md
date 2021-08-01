@@ -4,7 +4,7 @@
 - [Entrypoint](#entrypoint)
 - [Build Images](#build-images)
 - [Networks](#networks)
-- [Docker-Compose](#docker-compose)
+- [Docker Compose](#docker-compose)
 ---
 ### Container:
 ##### Create image as a container
