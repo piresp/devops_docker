@@ -20,11 +20,11 @@ docker rm $(docker ps -a -q) -f
 ```
 ##### directory method:bind
 ```.dockerfile
-docker run -d --name {name} -p 8081:80 --mount type=bind,source="$(pwd)",target=/usr/share/nginx/html/ nginx
+docker run -d --name {name} -p 80:80 --mount type=bind,source=$(pwd),target=/usr/share/nginx/html/ nginx
 ```
 ##### directory method:-v
 ```.dockerfile
-docker run -d -v "$(pwd)"/html/x:/usr/share/nginx/html/ nginx
+docker run -d -v $(pwd)/html/x:/usr/share/nginx/html/ nginx
 ```
 ---
 ### Volume:
